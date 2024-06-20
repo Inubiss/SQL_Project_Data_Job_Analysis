@@ -22,4 +22,4 @@ WHERE
     salary_year_avg IS NOT NULL
 ORDER BY
     salary_year_avg
-LIMIT 10
+LIMIT 100
