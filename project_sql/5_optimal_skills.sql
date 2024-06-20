@@ -6,6 +6,8 @@ Answer: What are the most optimal skills to learn (aka it's in high demand and a
 offering strategic insights for career development in data analysis
 */
 
+
+-- Identifies skills in high demand for Data Analyst roles
 WITH skills_demand AS (
     SELECT
         skills_dim.skill_id,
@@ -21,7 +23,9 @@ WITH skills_demand AS (
     GROUP BY
         skills_dim.skill_id,
         skills_dim.skills
-), average_salary AS (
+), 
+-- Skills with high average salaries for Data Analyst roles
+average_salary AS (
     SELECT 
         skills_job_dim.skill_id,
         ROUND(AVG(salary_year_avg), 0) AS avg_salary
@@ -34,7 +38,7 @@ WITH skills_demand AS (
     GROUP BY
         skills_job_dim.skill_id
 )
-
+-- Return high demand and high salaries for 10 skills 
 SELECT
     skills_demand.skill_id,
     skills_demand.skill,
@@ -52,7 +56,6 @@ LIMIT 25;
 
 
 -- Rewriting the same query more concisely without using CTEs
-
 SELECT
     skills_dim.skill_id,
     skills_dim.skills,
